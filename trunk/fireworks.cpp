@@ -4,8 +4,8 @@
 
 
 GLuint txSparkle;
-
-
+PARTICLE BangParticles[MAX_BANGPARTICLES][MAX_FIREWORKS];
+int FireworkCount = 0;
 
 bool LoadBitmapTexture(int RES, GLuint &texid)					// Creates Texture From A Bitmap File
 {
@@ -38,10 +38,7 @@ bool LoadBitmapTexture(int RES, GLuint &texid)					// Creates Texture From A Bit
 
 void InitFireworks(){
      
-     LoadBitmapTexture(IDB_SPARKLE, txSparkle);
-     
-     
-     
+     LoadBitmapTexture(IDB_SPARKLE, txSparkle);    
      
 }
 
@@ -65,4 +62,18 @@ void RenderFireworks(){
 }
 
 
+void CreateNewBang(){
+     
+     for(int p = 0; p < MAX_BANGPARTICLES; p++){
+             
 
+                 
+     //        BangParticles[p][f].x =         
+                 
+      
+             
+     }
+     
+     
+     
+}
