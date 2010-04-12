@@ -1,0 +1,6 @@
+#include "resource.h"
+
+IDB_SPARKLE BITMAP "sparkle.bmp"
+// IDB_FIRE BITMAP "fire.bmp"
+
+
