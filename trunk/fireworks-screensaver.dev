@@ -1,13 +1,13 @@
 [Project]
 FileName=fireworks-screensaver.dev
 Name=Fireworks Screensaver
-UnitCount=3
+UnitCount=5
 Type=0
 Ver=1
 ObjFiles=
 Includes=
 Libs=
-PrivateResource=fireworks-screensaver.rc
+PrivateResource=fireworks-screensaver_private.rc
 ResourceIncludes=
 MakeIncludes=
 Compiler=
@@ -30,7 +30,7 @@ CompilerSet=0
 CompilerSettings=0000000000000000000000
 
 [Unit1]
-FileName=main.cpp
+FileName=fireworks-screensaver.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -43,7 +43,7 @@ BuildCmd=
 Major=1
 Minor=0
 Release=0
-Build=120
+Build=124
 LanguageID=1033
 CharsetID=1252
 CompanyName=
@@ -69,6 +69,25 @@ BuildCmd=
 
 [Unit3]
 FileName=fireworks.h
+CompileCpp=1
+Folder=Fireworks Screensaver
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=fireworks.rc
+Folder=Fireworks Screensaver
+Compile=1
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=resource.h
 CompileCpp=1
 Folder=Fireworks Screensaver
 Compile=1

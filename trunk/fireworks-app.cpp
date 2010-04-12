@@ -385,10 +385,7 @@ int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 
 GLvoid InitialiseObjects(){
 
-
-
-
-
+    InitFireworks();
 
 }
 
@@ -418,7 +415,7 @@ GLvoid DrawGLScene(GLvoid){
 
 	// GL Drawing Code Goes Here!!!!
 
-
+    RenderFireworks();
 
 
 	SwapBuffers(hDC);

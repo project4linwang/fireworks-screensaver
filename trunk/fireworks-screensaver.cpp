@@ -5,6 +5,7 @@
 #include <gl\glext.h>
 #include <time.h>
 
+#include "fireworks.h"
 
 bool SetupOpenGL();
 void KillGL();
@@ -173,6 +174,8 @@ bool SetupOpenGL()
 	glDepthFunc(GL_LEQUAL);								// The Type Of Depth Testing To Do
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
 
+    InitFireworks();
+    
 
 	return TRUE;									// Success
 }
@@ -206,7 +209,7 @@ void DrawGLScene(){
 	glLoadIdentity();
 
 
-
+    RenderFireworks();
 
 
 
