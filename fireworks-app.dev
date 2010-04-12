@@ -1,13 +1,13 @@
 [Project]
-FileName=fireworks-screensaver.dev
-Name=Fireworks Screensaver
+FileName=fireworks-app.dev
+Name=opengl-app-template
 UnitCount=3
 Type=0
 Ver=1
 ObjFiles=
 Includes=
 Libs=
-PrivateResource=fireworks-screensaver.rc
+PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=
@@ -17,20 +17,38 @@ IsCpp=1
 Icon=
 ExeOutput=
 ObjectOutput=
-OverrideOutput=1
-OverrideOutputName=fireworks-screensaver.scr
+OverrideOutput=0
+OverrideOutputName=opengl-app-template.exe
 HostApplication=
 Folders=
 CommandLine=
 UseCustomMakefile=0
 CustomMakefile=
-IncludeVersionInfo=1
+IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000
 
+[VersionInfo]
+Major=0
+Minor=1
+Release=1
+Build=1
+LanguageID=1033
+CharsetID=1252
+CompanyName=
+FileVersion=
+FileDescription=Developed using the Dev-C++ IDE
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=
+AutoIncBuildNr=0
+
 [Unit1]
-FileName=main.cpp
+FileName=fireworks-app.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -39,28 +57,10 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[VersionInfo]
-Major=1
-Minor=0
-Release=0
-Build=120
-LanguageID=1033
-CharsetID=1252
-CompanyName=
-FileVersion=
-FileDescription=Fireworks Screensaver
-InternalName=
-LegalCopyright=Contact: richard.sabbarton@gmail.com
-LegalTrademarks=
-OriginalFilename=
-ProductName=
-ProductVersion=
-AutoIncBuildNr=1
-
 [Unit2]
-FileName=fireworks.cpp
+FileName=fireworks.h
 CompileCpp=1
-Folder=Fireworks Screensaver
+Folder=
 Compile=1
 Link=1
 Priority=1000
@@ -68,9 +68,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=fireworks.h
+FileName=fireworks.cpp
 CompileCpp=1
-Folder=Fireworks Screensaver
+Folder=
 Compile=1
 Link=1
 Priority=1000
