@@ -50,10 +50,10 @@ void InitFireworks(){
      FireworkBang.setsize = 0.2f;
      
      FireworkBang.RED   = 1.0f;
-     FireworkBang.GREEN = 1.0f;
-     FireworkBang.BLUE  = 1.0f;
+     FireworkBang.GREEN = 0.0f;
+     FireworkBang.BLUE  = 0.0f;
      
-     FireworkBang.RANDOMCOLOUR = false;
+     FireworkBang.RANDOMCOLOUR = true;
      
 }
 

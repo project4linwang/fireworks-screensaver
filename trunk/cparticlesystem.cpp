@@ -52,7 +52,17 @@ void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numpartic
         
         Particles[p].TTL = RandomInt(mintimetolive, maxtimetolive);
         
+        Particles[p].R = RED;
+        Particles[p].G = GREEN;
+        Particles[p].B = BLUE;
         
+        if (RANDOMCOLOUR) {
+
+            Particles[p].R = RandomFloat(0.0f, 1.0f, 100);
+            Particles[p].G = RandomFloat(0.0f, 1.0f, 100);
+            Particles[p].B = RandomFloat(0.0f, 1.0f, 100);
+                          
+        }
     }
     
     ACTIVE = true;
@@ -112,6 +122,8 @@ void CParticleSystem::Render(){
         glTranslatef(Particles[p].x, Particles[p].y, Particles[p].z);    
         
              sz = Particles[p].size / 2.0f;
+        
+             glColor4f(Particles[p].R, Particles[p].G, Particles[p].B, 1.0f);
         
              glBegin(GL_QUADS);
              
