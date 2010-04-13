@@ -2,10 +2,11 @@
 #include "fireworks.h"
 
 
+CParticleSystem FireworkBang;
 
-GLuint txSparkle;
-PARTICLE BangParticles[MAX_BANGPARTICLES][MAX_FIREWORKS];
 int FireworkCount = 0;
+
+
 
 bool LoadBitmapTexture(int RES, GLuint &texid)					// Creates Texture From A Bitmap File
 {
@@ -38,7 +39,21 @@ bool LoadBitmapTexture(int RES, GLuint &texid)					// Creates Texture From A Bit
 
 void InitFireworks(){
      
-     LoadBitmapTexture(IDB_SPARKLE, txSparkle);    
+     LoadBitmapTexture(IDB_SPARKLE, FireworkBang.texture);
+     
+     FireworkBang.minparticlespeed = -0.05f;
+     FireworkBang.maxparticlespeed = 0.05f;
+     FireworkBang.settsx = 0.0f;
+     FireworkBang.settsy = -0.002f;
+     FireworkBang.settsz = 0.0f;
+     
+     FireworkBang.setsize = 0.2f;
+     
+     FireworkBang.RED   = 1.0f;
+     FireworkBang.GREEN = 1.0f;
+     FireworkBang.BLUE  = 1.0f;
+     
+     FireworkBang.RANDOMCOLOUR = false;
      
 }
 
@@ -46,34 +61,11 @@ void InitFireworks(){
 
 void RenderFireworks(){
      
-     glTranslatef(0.0f, 0.0f, -5.0f);
-     glEnable(GL_TEXTURE_2D);
-     glBindTexture(GL_TEXTURE_2D, txSparkle);
+     if(!FireworkBang.ACTIVE){FireworkBang.Activate(0.0f, 0.0f, -5.0f, 100, 20, 40);}
      
-     glBegin(GL_QUADS);
-     
-       glVertex3f(-1.0f, -1.0f, 0.0f); glTexCoord2f(0.0f, 0.0f);
-       glVertex3f( 1.0f, -1.0f, 0.0f); glTexCoord2f(1.0f, 0.0f);
-       glVertex3f( 1.0f,  1.0f, 0.0f); glTexCoord2f(1.0f, 1.0f);
-       glVertex3f(-1.0f,  1.0f, 0.0f); glTexCoord2f(0.0f, 1.0f);
-     
-     glEnd();
-     
+     FireworkBang.Render();
+          
 }
 
 
-void CreateNewBang(){
-     
-     for(int p = 0; p < MAX_BANGPARTICLES; p++){
-             
 
-                 
-     //        BangParticles[p][f].x =         
-                 
-      
-             
-     }
-     
-     
-     
-}
