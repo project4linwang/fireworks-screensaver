@@ -23,6 +23,7 @@ class CParticleSystem
 	~CParticleSystem();
 	
     void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numparticles, int mintimetolive, int maxtimetolive);
+    void CParticleSystem::ActivateOne();
     void CParticleSystem::Adjust();
     void CParticleSystem::Render();	
 	
@@ -51,6 +52,10 @@ class CParticleSystem
     float sx,sy,sz;
     float tsx,tsy,tsz;
     int TTL;
+
+    int minTTL, maxTTL;
+    
+    bool CONTINUOUS;
     
     int ParticleCount;
        

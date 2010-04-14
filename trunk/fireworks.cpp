@@ -41,8 +41,8 @@ void InitFireworks(){
      
      LoadBitmapTexture(IDB_SPARKLE, FireworkBang.texture);
      
-     FireworkBang.minparticlespeed = -0.05f;
-     FireworkBang.maxparticlespeed = 0.05f;
+     FireworkBang.minparticlespeed =  0.05f;
+     FireworkBang.maxparticlespeed = -0.05f;
      FireworkBang.settsx = 0.0f;
      FireworkBang.settsy = -0.002f;
      FireworkBang.settsz = 0.0f;
@@ -54,6 +54,7 @@ void InitFireworks(){
      FireworkBang.BLUE  = 0.0f;
      
      FireworkBang.RANDOMCOLOUR = false;
+     FireworkBang.CONTINUOUS = true;
      
 }
 

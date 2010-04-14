@@ -5,9 +5,13 @@
 // class constructor
 CParticleSystem::CParticleSystem()
 {
-	// insert your code here
+
+    srand(time(NULL));	
+    
+    // insert your code here
 	ACTIVE = false;
 	RANDOMCOLOUR = false;
+	CONTINUOUS = false;
 	
 }
 
@@ -22,11 +26,14 @@ CParticleSystem::~CParticleSystem()
 void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numparticles, int mintimetolive, int maxtimetolive){
 
 
-    srand(time(NULL));                              
+                              
 
     x = xpos;
     y = ypos;
     z = zpos;
+    
+    minTTL = mintimetolive;
+    maxTTL = maxtimetolive;
     
     ParticleCount = numparticles;
     
@@ -50,7 +57,11 @@ void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numpartic
         
         Particles[p].size = setsize; 
         
-        Particles[p].TTL = RandomInt(mintimetolive, maxtimetolive);
+        if(CONTINUOUS){
+            Particles[p].TTL = 0;
+        } else {
+            Particles[p].TTL = RandomInt(minTTL, maxTTL);
+        }
         
         Particles[p].R = RED;
         Particles[p].G = GREEN;
@@ -67,6 +78,51 @@ void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numpartic
     
     ACTIVE = true;
                         
+}
+
+
+void CParticleSystem::ActivateOne(){
+
+
+    // srand(time(NULL));                              
+
+    for (int p = 0; p < ParticleCount; p++){
+        
+        if(Particles[p].TTL <= 0){
+            Particles[p].x = 0.0f;    
+            Particles[p].y = 0.0f;    
+            Particles[p].z = 0.0f;    
+            
+            Particles[p].sx = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
+            Particles[p].sy = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
+            Particles[p].sz = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
+            
+            Particles[p].tsx = settsx;    
+            Particles[p].tsy = settsy;    
+            Particles[p].tsz = settsz;   
+            
+            Particles[p].size = setsize; 
+            
+            Particles[p].TTL = RandomInt(minTTL, maxTTL);
+            
+            Particles[p].R = RED;
+            Particles[p].G = GREEN;
+            Particles[p].B = BLUE;
+            
+            if (RANDOMCOLOUR) {
+    
+                Particles[p].R = RandomFloat(0.0f, 1.0f, 100);
+                Particles[p].G = RandomFloat(0.0f, 1.0f, 100);
+                Particles[p].B = RandomFloat(0.0f, 1.0f, 100);
+                              
+            }
+            
+            break;
+            
+        }
+    }
+    
+                       
 }
 
 
@@ -91,9 +147,12 @@ void CParticleSystem::Adjust(){
         
     }
     
-    TTL -= 1;
+    if(CONTINUOUS){ActivateOne();}
     
-    if (TTL <= 0) {ACTIVE=false;}
+    if(!CONTINUOUS){
+        TTL -= 1;    
+        if (TTL <= 0) {ACTIVE=false;}
+    }
 
 }
 
@@ -101,6 +160,9 @@ void CParticleSystem::Adjust(){
 void CParticleSystem::Render(){
 
      float sz;
+
+     if(!ACTIVE){return;}
+
 
      glPushMatrix();
                           
