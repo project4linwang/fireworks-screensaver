@@ -53,7 +53,7 @@ void InitFireworks(){
      FireworkBang.GREEN = 0.0f;
      FireworkBang.BLUE  = 0.0f;
      
-     FireworkBang.RANDOMCOLOUR = true;
+     FireworkBang.RANDOMCOLOUR = false;
      
 }
 
