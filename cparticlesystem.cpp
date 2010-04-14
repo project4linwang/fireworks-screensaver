@@ -23,21 +23,10 @@ CParticleSystem::~CParticleSystem()
 
 
 
-void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numparticles, int mintimetolive, int maxtimetolive){
+void CParticleSystem::Activate(){
 
-
-                              
-
-    x = xpos;
-    y = ypos;
-    z = zpos;
     
-    minTTL = mintimetolive;
-    maxTTL = maxtimetolive;
-    
-    ParticleCount = numparticles;
-    
-    TTL = maxtimetolive;
+    TTL = maxTTL;
     
     Particles = new PARTICLE[ParticleCount];
                               
@@ -47,9 +36,18 @@ void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numpartic
         Particles[p].y = 0.0f;    
         Particles[p].z = 0.0f;    
         
-        Particles[p].sx = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
-        Particles[p].sy = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
-        Particles[p].sz = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
+        Particles[p].sx = RandomFloat(minparticlespeedx, maxparticlespeedx, 1000);    
+        Particles[p].sy = RandomFloat(minparticlespeedy, maxparticlespeedy, 1000);    
+        Particles[p].sz = RandomFloat(minparticlespeedz, maxparticlespeedz, 1000);    
+
+    	if(NORMALIZE){
+    		float CombinedSquares = (Particles[p].sx * Particles[p].sx) + (Particles[p].sy * Particles[p].sy) + (Particles[p].sz * Particles[p].sz);
+    		float NormalisationFactor = sqrt(CombinedSquares);
+    		
+    		Particles[p].sx = (Particles[p].sx / NormalisationFactor) * NormalizedSpeedFactor;
+    		Particles[p].sy = (Particles[p].sy / NormalisationFactor) * NormalizedSpeedFactor;
+    		Particles[p].sz = (Particles[p].sz / NormalisationFactor) * NormalizedSpeedFactor;
+    	}
         
         Particles[p].tsx = settsx;    
         Particles[p].tsy = settsy;    
@@ -93,9 +91,9 @@ void CParticleSystem::ActivateOne(){
             Particles[p].y = 0.0f;    
             Particles[p].z = 0.0f;    
             
-            Particles[p].sx = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
-            Particles[p].sy = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
-            Particles[p].sz = RandomFloat(minparticlespeed, maxparticlespeed, 100);    
+        Particles[p].sx = RandomFloat(minparticlespeedx, maxparticlespeedx, 1000);    
+        Particles[p].sy = RandomFloat(minparticlespeedy, maxparticlespeedy, 1000);    
+        Particles[p].sz = RandomFloat(minparticlespeedz, maxparticlespeedz, 1000);    
             
             Particles[p].tsx = settsx;    
             Particles[p].tsy = settsy;    
@@ -147,11 +145,25 @@ void CParticleSystem::Adjust(){
         
     }
     
-    if(CONTINUOUS){ActivateOne();}
+    if(CONTINUOUS){
+        for(int f=0; f<ActivateCountPerFrame; f++){
+            ActivateOne();
+        }
+    }
     
     if(!CONTINUOUS){
         TTL -= 1;    
         if (TTL <= 0) {ACTIVE=false;}
+    }
+    
+    if(ACTIVE){
+        x += sx;           
+        y += sy;           
+        z += sz; 
+        
+        sx += (tsx - sx) / 20;          
+        sy += (tsy - sy) / 20;          
+        sz += (tsz - sz) / 20;          
     }
 
 }

@@ -21,5 +21,8 @@ bool LoadBitmapTexture(int RES, GLuint &texid);
 
 void InitFireworks();
 void RenderFireworks();
+void CheckFireworks();
+void SetFireworkLit();
+void SetFireworkBang();
 
 
