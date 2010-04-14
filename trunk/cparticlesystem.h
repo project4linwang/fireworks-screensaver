@@ -6,6 +6,7 @@
 
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #ifndef CPARTICLESYSTEM_H
 #define CPARTICLESYSTEM_H
@@ -22,7 +23,7 @@ class CParticleSystem
 	// class destructor
 	~CParticleSystem();
 	
-    void CParticleSystem::Activate(float xpos, float ypos, float zpos, int numparticles, int mintimetolive, int maxtimetolive);
+    void CParticleSystem::Activate();
     void CParticleSystem::ActivateOne();
     void CParticleSystem::Adjust();
     void CParticleSystem::Render();	
@@ -58,13 +59,20 @@ class CParticleSystem
     bool CONTINUOUS;
     
     int ParticleCount;
+    int ActivateCountPerFrame;
        
     PARTICLE * Particles;  
     
-	float minparticlespeed, maxparticlespeed, settsx, settsy, settsz, setsize;
+	float minparticlespeedx, maxparticlespeedx;
+	float minparticlespeedy, maxparticlespeedy;
+	float minparticlespeedz, maxparticlespeedz;
+    float settsx, settsy, settsz, setsize;
 	bool RANDOMCOLOUR;
 	float RED,GREEN,BLUE;
-	
+
+	bool NORMALIZE;
+	float NormalizedSpeedFactor;
+
 	GLuint texture;
 	
 };

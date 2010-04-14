@@ -39,22 +39,7 @@ bool LoadBitmapTexture(int RES, GLuint &texid)					// Creates Texture From A Bit
 
 void InitFireworks(){
      
-     LoadBitmapTexture(IDB_SPARKLE, FireworkBang.texture);
-     
-     FireworkBang.minparticlespeed =  0.05f;
-     FireworkBang.maxparticlespeed = -0.05f;
-     FireworkBang.settsx = 0.0f;
-     FireworkBang.settsy = -0.002f;
-     FireworkBang.settsz = 0.0f;
-     
-     FireworkBang.setsize = 0.2f;
-     
-     FireworkBang.RED   = 1.0f;
-     FireworkBang.GREEN = 0.0f;
-     FireworkBang.BLUE  = 0.0f;
-     
-     FireworkBang.RANDOMCOLOUR = false;
-     FireworkBang.CONTINUOUS = true;
+     LoadBitmapTexture(IDB_SPARKLE, FireworkBang.texture);     
      
 }
 
@@ -62,13 +47,110 @@ void InitFireworks(){
 
 void RenderFireworks(){
      
+     glTranslatef(0.0f, -3.5f, -10.0f);
      
-     
-     if(!FireworkBang.ACTIVE){FireworkBang.Activate(0.0f, 0.0f, -5.0f, 100, 20, 40);}
+     CheckFireworks();
      
      FireworkBang.Render();
           
 }
 
 
+void CheckFireworks(){
+     
+     if(!FireworkBang.ACTIVE){SetFireworkLit();}
+     
+     if(FireworkBang.y > 3.0f && FireworkBang.CONTINUOUS){SetFireworkBang();}  
+}
 
+void SetFireworkLit(){
+     
+     FireworkBang.x = 0.0f;
+     FireworkBang.y = 0.0f;
+     FireworkBang.z = 0.0f;
+     
+     FireworkBang.sx = 0.0f;
+     FireworkBang.sy = 0.0f;
+     FireworkBang.sz = 0.0f;
+     
+     FireworkBang.tsx = FireworkBang.CParticleSystem::RandomFloat(-0.2f, 0.2f, 100);
+     FireworkBang.tsy = 0.3f;
+     FireworkBang.tsz = 0.0f;
+     
+     FireworkBang.minparticlespeedx =  -0.01f - (FireworkBang.tsx / 10.0f);
+     FireworkBang.maxparticlespeedx =  0.01f - (FireworkBang.tsx / 10.0f);
+     FireworkBang.minparticlespeedy = -0.02f;
+     FireworkBang.maxparticlespeedy = -0.05f;
+     FireworkBang.minparticlespeedz =  0.02f;
+     FireworkBang.maxparticlespeedz = -0.02f;
+
+     FireworkBang.NORMALIZE = false;
+     FireworkBang.NormalizedSpeedFactor = 0.1f;
+     
+     FireworkBang.settsx = 0.0f;
+     FireworkBang.settsy = -0.02f;
+     FireworkBang.settsz = 0.0f;
+     
+     FireworkBang.setsize = 0.05f;
+     
+     FireworkBang.RED   = 1.0f;
+     FireworkBang.GREEN = 1.0f;
+     FireworkBang.BLUE  = 0.6f;
+     
+     FireworkBang.RANDOMCOLOUR = false;
+     FireworkBang.CONTINUOUS = true;
+     
+     FireworkBang.ParticleCount = 1000;
+     FireworkBang.ActivateCountPerFrame = 10;
+     
+     FireworkBang.minTTL = 10;
+     FireworkBang.maxTTL = 30;
+     
+     FireworkBang.Activate();
+}
+
+void SetFireworkBang(){
+     
+//     FireworkBang.x = 0.0f;
+//     FireworkBang.y = 0.0f;
+//     FireworkBang.z = 0.0f;
+     
+//     FireworkBang.sx = 0.0f;
+//     FireworkBang.sy = 0.0f;
+//     FireworkBang.sz = 0.0f;
+     
+     FireworkBang.tsx = 0.0f;
+     FireworkBang.tsy = -0.02f;
+     FireworkBang.tsz = 0.0f;
+     
+     FireworkBang.minparticlespeedx = -0.09f;
+     FireworkBang.maxparticlespeedx =  0.09f;
+     FireworkBang.minparticlespeedy = -0.09f;
+     FireworkBang.maxparticlespeedy =  0.09f;
+     FireworkBang.minparticlespeedz = -0.09f;
+     FireworkBang.maxparticlespeedz =  0.09f;
+     
+     FireworkBang.NORMALIZE = true;
+     FireworkBang.NormalizedSpeedFactor = 0.1f;
+     
+     FireworkBang.settsx = 0.0f;
+     FireworkBang.settsy = -0.02f;
+     FireworkBang.settsz = 0.0f;
+     
+     FireworkBang.setsize = 0.15f;
+     
+     FireworkBang.RED   = FireworkBang.CParticleSystem::RandomFloat(0.7f, 1.0f, 30);
+     FireworkBang.GREEN = FireworkBang.CParticleSystem::RandomFloat(0.7f, 1.0f, 30);
+     FireworkBang.BLUE  = FireworkBang.CParticleSystem::RandomFloat(0.7f, 1.0f, 30);
+     
+     FireworkBang.RANDOMCOLOUR = false;
+     FireworkBang.CONTINUOUS = false;
+     
+     FireworkBang.ParticleCount = 1000;
+     FireworkBang.ActivateCountPerFrame = 1;
+     
+     FireworkBang.minTTL = 30;
+     FireworkBang.maxTTL = 60;
+    
+     FireworkBang.CParticleSystem::Activate();
+}
