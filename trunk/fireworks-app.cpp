@@ -1,11 +1,13 @@
 // Special thanks go to nehe.gamedev.net for giving me the tools to start
 // programming in 3D using OpenGL.  All the tutorials are fantastic
 
+#define TARGET_FRAMERATE 60
 
 #include <windows.h>
 #include <gl\gl.h>
 #include <gl\glu.h>
 #include <gl\glext.h>
+#include <time.h>
 
 #include "fireworks.h"
 
@@ -37,8 +39,8 @@ bool				keys[256];
 bool				active=TRUE;
 bool				fullscreen=TRUE;
 
-
-
+int                 ticks;
+int                 ticksthisframe;
 
 
 LRESULT CALLBACK WndProc(HWND hWnd,	UINT Message, WPARAM wParam, LPARAM lParam){
@@ -102,7 +104,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		} else {
 			if(active){
 				// Our Application Processing goes here.
+				ticks = GetTickCount();
 				MainProgramLoop();
+				ticksthisframe = GetTickCount() - ticks;
+				while (ticksthisframe < 1000 / TARGET_FRAMERATE){
+                      
+                      ticksthisframe = GetTickCount() - ticks;
+                      
+                }
 			}
 		}
 	}
