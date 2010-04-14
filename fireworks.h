@@ -7,8 +7,8 @@
 #include "resource.h"
 #include "cparticlesystem.h"
 
-#define MAX_FIREWORKS 3
-#define MAX_BANGPARTICLES 100
+
+
 
 
 

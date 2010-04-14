@@ -61,6 +61,8 @@ void InitFireworks(){
 
 void RenderFireworks(){
      
+     
+     
      if(!FireworkBang.ACTIVE){FireworkBang.Activate(0.0f, 0.0f, -5.0f, 100, 20, 40);}
      
      FireworkBang.Render();
