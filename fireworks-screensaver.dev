@@ -1,7 +1,7 @@
 [Project]
 FileName=fireworks-screensaver.dev
 Name=Fireworks Screensaver
-UnitCount=5
+UnitCount=7
 Type=0
 Ver=1
 ObjFiles=
@@ -43,7 +43,7 @@ BuildCmd=
 Major=1
 Minor=0
 Release=0
-Build=124
+Build=125
 LanguageID=1033
 CharsetID=1252
 CompanyName=
@@ -88,6 +88,26 @@ BuildCmd=
 
 [Unit5]
 FileName=resource.h
+CompileCpp=1
+Folder=Fireworks Screensaver
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=cparticlesystem.cpp
+CompileCpp=1
+Folder=Fireworks Screensaver
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=cparticlesystem.h
 CompileCpp=1
 Folder=Fireworks Screensaver
 Compile=1
