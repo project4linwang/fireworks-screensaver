@@ -428,6 +428,8 @@ GLvoid DrawGLScene(GLvoid){
 
 
 	SwapBuffers(hDC);
+	
+	
 
 }
 
