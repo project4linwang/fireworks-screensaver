@@ -15,6 +15,7 @@
 extern int FireworkCount;
 
 extern CParticleSystem FireworkBang;
+extern CParticleSystem FireworkFuse;
 
 bool LoadBitmapTexture(int RES, GLuint &texid);
 
