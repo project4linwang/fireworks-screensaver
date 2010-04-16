@@ -126,8 +126,8 @@ void SetFireworkLit(){
      FireworkBang.tsy = 0.6f;
      FireworkBang.tsz = 0.0f;
      
-     FireworkBang.minparticlespeedx =  -0.01f - (FireworkBang.tsx / 10.0f);
-     FireworkBang.maxparticlespeedx =  0.01f - (FireworkBang.tsx / 10.0f);
+     FireworkBang.minparticlespeedx =  -0.001f - (FireworkBang.tsx / 10.0f);
+     FireworkBang.maxparticlespeedx =  0.001f - (FireworkBang.tsx / 10.0f);
      FireworkBang.minparticlespeedy = -0.02f;
      FireworkBang.maxparticlespeedy = -0.05f;
      FireworkBang.minparticlespeedz =  0.02f;
